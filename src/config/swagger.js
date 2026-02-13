@@ -28,7 +28,7 @@ const options = {
       },
     ],
   },
-  apis: ["./src/routes/v1/*.js"], // path correct hona chahiye
+  apis: ["./src/modules/**/*.routes.js"], // Scan specific route files
 };
 
 const swaggerSpec = swaggerJSDoc(options);

@@ -4,9 +4,18 @@ const app = express();
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger");
 
+// Serve Swagger UI
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+
 app.use(express.json());
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.get("/", (req, res) => {
+  res.send(`
+    <h1>Welcome to Employee Management System API</h1>
+    <p>Documentation available at <a href="/api-docs">/api-docs</a></p>
+  `);
+});
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

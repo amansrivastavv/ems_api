@@ -1,5 +1,5 @@
 const mysql = require("mysql2");
-require("dotenv").config();
+const env = require("./env"); // Load env variables using dotenv-flow
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
