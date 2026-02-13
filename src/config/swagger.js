@@ -1,0 +1,36 @@
+const swaggerJSDoc = require("swagger-jsdoc");
+
+const options = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "EMS API",
+      version: "1.0.0",
+      description: "Employee Management System API Documentation",
+    },
+    servers: [
+      {
+        url: "http://localhost:5000/api/v1",
+      },
+    ],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+        },
+      },
+    },
+    security: [
+      {
+        bearerAuth: [],
+      },
+    ],
+  },
+  apis: ["./src/routes/v1/*.js"], // path correct hona chahiye
+};
+
+const swaggerSpec = swaggerJSDoc(options);
+
+module.exports = swaggerSpec;
