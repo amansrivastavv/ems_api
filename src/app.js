@@ -4,7 +4,7 @@ const app = express();
 const swaggerUi = require("swagger-ui-express");
 const swaggerSpec = require("./config/swagger");
 
-// Serve Swagger UI with CDN links (Fix for cPanel static file issues)
+
 const swaggerOptions = {
   customCssUrl: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.min.css",
   customJs: [
@@ -12,6 +12,12 @@ const swaggerOptions = {
     "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-standalone-preset.js",
   ],
 };
+
+const morgan = require("morgan");
+
+// Use morgan for logging HTTP requests
+const logFormat = process.env.NODE_ENV === "production" ? "combined" : "dev";
+app.use(morgan(logFormat));
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerOptions));
 
