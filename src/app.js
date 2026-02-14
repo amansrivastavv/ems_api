@@ -16,7 +16,7 @@ const swaggerOptions = {
 const morgan = require("morgan");
 
 // Use morgan for logging HTTP requests
-const logFormat = process.env.NODE_ENV === "production" ? "combined" : "dev";
+const logFormat = process.env.NODE_ENV === "development" ? "dev" : "combined";
 app.use(morgan(logFormat));
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec, swaggerOptions));
