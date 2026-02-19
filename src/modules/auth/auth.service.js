@@ -12,7 +12,7 @@ exports.register = async (data) => {
 
   const user = await repo.createUser({
     ...data,
-    role_id: data.role_id || 2, // Default to Employee (2)
+    role_id: data.role_id || 2, // Use provided role_id or default to 2 (Employee)
     password: hashedPassword,
   });
 

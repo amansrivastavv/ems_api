@@ -41,15 +41,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// IMPORTANT LINE
 app.use("/api/v1", require("./routes/v1"));
-
-app.get("/", (req, res) => {
-  res.send("Welcome to Employee Management System API");
-});
-
-app.get("/test", (req, res) => {
-  res.json({ message: "Test route working" });
-});
 
 module.exports = app;
