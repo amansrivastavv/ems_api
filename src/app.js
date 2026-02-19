@@ -43,4 +43,7 @@ app.use((req, res, next) => {
 
 app.use("/api/v1", require("./routes/v1"));
 
+// Global Error Handler
+app.use(require("./middlewares/error.middleware"));
+
 module.exports = app;
